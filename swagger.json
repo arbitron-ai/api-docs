@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "version" : "2025-10-07T02:24:22Z",
-    "title" : "Arbitration REST API"
+    "title" : "Arbitron REST API"
   },
   "host" : "rest.arbitron.ai",
   "schemes" : [ "https" ],
