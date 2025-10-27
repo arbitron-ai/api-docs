@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2025-10-07T02:24:22Z",
+    "version" : "2025-10-24T02:40:08Z",
     "title" : "Arbitron REST API"
   },
   "host" : "rest.arbitron.ai",
@@ -30,7 +30,7 @@
           "200" : {
             "description" : "200 response",
             "schema" : {
-              "$ref" : "#/definitions/Empty"
+              "$ref" : "#/definitions/claim"
             }
           }
         },
@@ -48,17 +48,17 @@
           "type" : "string"
         }, {
           "in" : "body",
-          "name" : "ClaimModel",
+          "name" : "claim",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/ClaimModel"
+            "$ref" : "#/definitions/claim"
           }
         } ],
         "responses" : {
           "201" : {
             "description" : "201 response",
             "schema" : {
-              "$ref" : "#/definitions/Empty"
+              "$ref" : "#/definitions/claim"
             }
           }
         },
@@ -76,17 +76,17 @@
           "type" : "string"
         }, {
           "in" : "body",
-          "name" : "ClaimModel",
+          "name" : "claim",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/ClaimModel"
+            "$ref" : "#/definitions/claim"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "200 response",
             "schema" : {
-              "$ref" : "#/definitions/Empty"
+              "$ref" : "#/definitions/claim"
             }
           }
         },
@@ -575,33 +575,6 @@
         } ]
       }
     },
-    "/claim_document_labels" : {
-      "get" : {
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "client_id",
-          "in" : "query",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "200 response",
-            "schema" : {
-              "$ref" : "#/definitions/Empty"
-            },
-            "headers" : {
-              "Content-Type" : {
-                "type" : "string"
-              }
-            }
-          }
-        },
-        "security" : [ {
-          "api_key" : [ ]
-        } ]
-      }
-    },
     "/claims" : {
       "get" : {
         "produces" : [ "application/json" ],
@@ -890,7 +863,7 @@
         },
         "filename" : {
           "type" : "string",
-          "description" : "Original filename"
+          "description" : "The name of the file to include extension."
         },
         "description" : {
           "type" : "string",
@@ -905,7 +878,7 @@
       "properties" : {
         "cpt_id" : {
           "type" : "integer",
-          "description" : "CPT ID"
+          "description" : "The CPT ID used to track the CPT reccord. "
         },
         "arb_id" : {
           "type" : "integer",
@@ -913,11 +886,11 @@
         },
         "filename" : {
           "type" : "string",
-          "description" : "File name"
+          "description" : "the name of the file being uploaded. Include the file extension"
         },
         "file" : {
           "type" : "string",
-          "description" : "Binary file content (base64-encoded)"
+          "description" : "The binary file content (base64-encoded)"
         }
       },
       "title" : "uploadEobModel"
@@ -936,177 +909,6 @@
         }
       },
       "title" : "deleteEobModel"
-    },
-    "ClaimModel" : {
-      "type" : "object",
-      "required" : [ "service_date" ],
-      "properties" : {
-        "state_of_service" : {
-          "type" : "string"
-        },
-        "initial_payment_date" : {
-          "type" : "string",
-          "description" : "Format: YYYY-MM-DD"
-        },
-        "insurance_phone" : {
-          "type" : "string"
-        },
-        "insurance_address2" : {
-          "type" : "string"
-        },
-        "service_date" : {
-          "type" : "string",
-          "description" : "Required. Format: YYYY-MM-DD"
-        },
-        "insurance_state" : {
-          "type" : "string"
-        },
-        "entity_service_description" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_state" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_email" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_name" : {
-          "type" : "string"
-        },
-        "insurance_name" : {
-          "type" : "string"
-        },
-        "entity_tax_id" : {
-          "type" : "string"
-        },
-        "entity_point_contact_zip" : {
-          "type" : "string"
-        },
-        "entity_npi" : {
-          "type" : "number"
-        },
-        "open_negotiation_notice_file_doc" : {
-          "type" : "string"
-        },
-        "entity_point_contact_phone" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_phone" : {
-          "type" : "string"
-        },
-        "facility_name" : {
-          "type" : "string"
-        },
-        "arb_id" : {
-          "type" : "integer",
-          "description" : "Required for updates"
-        },
-        "entity_secondary_point_contact_city" : {
-          "type" : "string"
-        },
-        "entity_consent_from_participant" : {
-          "type" : "boolean"
-        },
-        "entity_point_contact_city" : {
-          "type" : "string"
-        },
-        "idr_extension_received" : {
-          "type" : "boolean"
-        },
-        "insurance_email" : {
-          "type" : "string"
-        },
-        "physician_name" : {
-          "type" : "string"
-        },
-        "claim_id" : {
-          "type" : "string"
-        },
-        "health_plan_policy_type" : {
-          "type" : "string"
-        },
-        "insurance_address" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_address2" : {
-          "type" : "string"
-        },
-        "insurance_health_plan_type" : {
-          "type" : "string"
-        },
-        "member_id" : {
-          "type" : "string"
-        },
-        "cooling_off_date" : {
-          "type" : "string",
-          "description" : "Format: YYYY-MM-DD"
-        },
-        "entity_point_contact_address2" : {
-          "type" : "string"
-        },
-        "insurance_fehb_enrollment_code" : {
-          "type" : "string"
-        },
-        "insurance_zip_code" : {
-          "type" : "string"
-        },
-        "import_id" : {
-          "type" : "string"
-        },
-        "entity_service_type" : {
-          "type" : "string"
-        },
-        "diagnosis_code_4" : {
-          "type" : "string"
-        },
-        "diagnosis_code_5" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_address" : {
-          "type" : "string"
-        },
-        "entity_other_service_description" : {
-          "type" : "string"
-        },
-        "entity_point_contact_address" : {
-          "type" : "string"
-        },
-        "entity_secondary_point_contact_zip" : {
-          "type" : "string"
-        },
-        "procedure_type" : {
-          "type" : "string"
-        },
-        "entity_type" : {
-          "type" : "string"
-        },
-        "diagnosis_code_2" : {
-          "type" : "string"
-        },
-        "diagnosis_code_3" : {
-          "type" : "string"
-        },
-        "insurance_city" : {
-          "type" : "string"
-        },
-        "diagnosis_code_1" : {
-          "type" : "string"
-        },
-        "negotiation_start_date" : {
-          "type" : "string",
-          "description" : "Format: YYYY-MM-DD"
-        },
-        "insurance_fax_number" : {
-          "type" : "string"
-        },
-        "place_of_service" : {
-          "type" : "string"
-        },
-        "entity_point_contact_state" : {
-          "type" : "string"
-        }
-      },
-      "title" : "claimModel"
     },
     "idrModel" : {
       "type" : "object",
@@ -1211,6 +1013,229 @@
         }
       },
       "title" : "Error Schema"
+    },
+    "claim" : {
+      "type" : "object",
+      "required" : [ "service_date" ],
+      "properties" : {
+        "state_of_service" : {
+          "type" : "string",
+          "description" : "The state abbreviation for the location of service."
+        },
+        "initial_payment_date" : {
+          "type" : "string",
+          "description" : "Initial payment date. This is the check date. Format: YYYY-MM-DD"
+        },
+        "insurance_phone" : {
+          "type" : "string",
+          "description" : "The primary contact for the insurance carrier."
+        },
+        "insurance_address2" : {
+          "type" : "string",
+          "description" : "Line 2 of the insurance carrier address"
+        },
+        "service_date" : {
+          "type" : "string",
+          "description" : "Date of the service. Required. Format: YYYY-MM-DD."
+        },
+        "insurance_state" : {
+          "type" : "string",
+          "description" : "The state abbreviation"
+        },
+        "entity_service_description" : {
+          "type" : "string",
+          "description" : "Service description for arbitration"
+        },
+        "entity_secondary_point_contact_state" : {
+          "type" : "string",
+          "description" : "Secondary point of contact state abbreviation."
+        },
+        "entity_secondary_point_contact_email" : {
+          "type" : "string",
+          "description" : "Secondary point of contact email address."
+        },
+        "entity_secondary_point_contact_name" : {
+          "type" : "string",
+          "description" : "Secondary point of contact name."
+        },
+        "insurance_name" : {
+          "type" : "string",
+          "description" : "The name of the insurance carrier."
+        },
+        "entity_tax_id" : {
+          "type" : "string",
+          "description" : "The tax ID of the entity associated with the claim. Must be exactly 9 numeric digits (no letters, spaces, or symbols).",
+          "minLength" : 9,
+          "maxLength" : 9
+        },
+        "entity_point_contact_zip" : {
+          "type" : "string",
+          "description" : "Primary contact zip"
+        },
+        "entity_npi" : {
+          "type" : "number",
+          "description" : "The National Provider Identifier (NPI) of the entity associated with the claim. Must be exactly 10 digits.",
+          "minimum" : 1.0E9,
+          "maximum" : 9.999999999E9
+        },
+        "open_negotiation_notice_file_doc" : {
+          "type" : "string",
+          "description" : "File name for the saved open negotiation notice document. Field can only be updated via file upload process."
+        },
+        "entity_point_contact_phone" : {
+          "type" : "string",
+          "description" : "Primary contact phone"
+        },
+        "entity_secondary_point_contact_phone" : {
+          "type" : "string",
+          "description" : "Secondary point of contact phone."
+        },
+        "facility_name" : {
+          "type" : "string",
+          "description" : "The name of the facility associated with the claim."
+        },
+        "arb_id" : {
+          "type" : "integer",
+          "description" : "The unique ID within arbitron.ai claim records for tracking. Required for updates and cannot be updated."
+        },
+        "entity_secondary_point_contact_city" : {
+          "type" : "string",
+          "description" : "The secondary point of contact city."
+        },
+        "entity_consent_from_participant" : {
+          "type" : "boolean",
+          "description" : "Consent from participant. This is false by default."
+        },
+        "entity_point_contact_city" : {
+          "type" : "string",
+          "description" : "Primary contact city"
+        },
+        "idr_extension_received" : {
+          "type" : "boolean",
+          "description" : "Determination if a idr extension was received. If set to true, the IDR extension document should be uploaded."
+        },
+        "insurance_email" : {
+          "type" : "string",
+          "description" : "The insurance carrier email address."
+        },
+        "physician_name" : {
+          "type" : "string",
+          "description" : "Name of the physician on the claim."
+        },
+        "claim_id" : {
+          "type" : "string",
+          "description" : "The claim number associated with the claim. A system-generated, unique reference number assigned by a payer to track, process, and adjudicate a specific medical billing claim."
+        },
+        "health_plan_policy_type" : {
+          "type" : "string",
+          "description" : "The health plan policy type required for arbitration. Values can be: 'Individual health insurance issuer', 'Fully-insured ERISA group health plan', 'Either partially or fully self-insured ERISA group health plan', 'Federal Employees Health Benefits (FEHB) carrier', 'Church Plan', 'Non-federal government plan (e.g. state or local government plan)', 'No Plan/Issuer Response'"
+        },
+        "insurance_address" : {
+          "type" : "string",
+          "description" : "Line 1 of the insurance carrier address"
+        },
+        "entity_secondary_point_contact_address2" : {
+          "type" : "string",
+          "description" : "Secondary point of contact address line 2."
+        },
+        "insurance_health_plan_type" : {
+          "type" : "string",
+          "description" : "The health care plan type which can be GROUP_HEALTH_PLAN, INDIVIDUAL_HEALTH_INSURANCE_ISSUER, FEHB_CARRIER"
+        },
+        "member_id" : {
+          "type" : "string",
+          "description" : "A unique identifier assigned by a health insurance company to a specific insurance policy held by the patient, used to verify coverage and process medical claims."
+        },
+        "cooling_off_date" : {
+          "type" : "string",
+          "description" : "Date of the IDR determination plus 90 days. The cooling-off period begins on the date the certified IDR entity issues its determination. Format: YYYY-MM-DD."
+        },
+        "entity_point_contact_address2" : {
+          "type" : "string",
+          "description" : "Primary contact address line 2"
+        },
+        "insurance_fehb_enrollment_code" : {
+          "type" : "string",
+          "description" : "Federal Employees Health Benefits (FEHB) enrollment codes are used to identify and select health insurance plans for federal employees and their eligible dependents."
+        },
+        "insurance_zip_code" : {
+          "type" : "string",
+          "description" : "The insurance carrier zip code"
+        },
+        "import_id" : {
+          "type" : "string",
+          "description" : "Imported ID to help track records uniquely from 3rd party system."
+        },
+        "entity_service_type" : {
+          "type" : "string",
+          "description" : "Service type for arbitration."
+        },
+        "diagnosis_code_4" : {
+          "type" : "string",
+          "description" : "Quaternary diagnosis code for for the claim. This is optional."
+        },
+        "diagnosis_code_5" : {
+          "type" : "string",
+          "description" : "Quinary diagnosis code for for the claim. This is optional."
+        },
+        "entity_secondary_point_contact_address" : {
+          "type" : "string",
+          "description" : "Secondary point of contact address line 1."
+        },
+        "entity_other_service_description" : {
+          "type" : "string",
+          "description" : "Other service description"
+        },
+        "entity_point_contact_address" : {
+          "type" : "string",
+          "description" : "Primary contact address"
+        },
+        "entity_secondary_point_contact_zip" : {
+          "type" : "string",
+          "description" : "Secondary point of contact zip code"
+        },
+        "procedure_type" : {
+          "type" : "string",
+          "description" : "The coding classification or category used to describe a medical service or intervention associated with the claim."
+        },
+        "entity_type" : {
+          "type" : "string",
+          "description" : "Entity type for arbitration. The entity type can be a value of HEALTH_CARE_PROVIDER, HEALTH_CARE_FACILITY, PROVIDER_OF_AIR_AMBULANCE_SERVICES"
+        },
+        "diagnosis_code_2" : {
+          "type" : "string",
+          "description" : "Secondary diagnosis code for for the claim. This is optional."
+        },
+        "diagnosis_code_3" : {
+          "type" : "string",
+          "description" : "Tertiary diagnosis code for for the claim. This is optional."
+        },
+        "insurance_city" : {
+          "type" : "string",
+          "description" : "The address city for the insurance carrier"
+        },
+        "diagnosis_code_1" : {
+          "type" : "string",
+          "description" : "The diagnosis code for for the claim."
+        },
+        "negotiation_start_date" : {
+          "type" : "string",
+          "description" : "Negotiation start date. Format: YYYY-MM-DD"
+        },
+        "insurance_fax_number" : {
+          "type" : "string",
+          "description" : "The fax number of the insurance carrier. This field isn't required"
+        },
+        "place_of_service" : {
+          "type" : "string",
+          "description" : "The name of the place of service for the claim."
+        },
+        "entity_point_contact_state" : {
+          "type" : "string",
+          "description" : "Primary contact state"
+        }
+      },
+      "title" : "claim"
     },
     "ClaimCptModel" : {
       "type" : "object",
