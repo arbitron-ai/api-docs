@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "2025-10-24T02:40:08Z",
+    "version" : "2025-12-01T00:45:35Z",
     "title" : "Arbitron REST API"
   },
   "host" : "rest.arbitron.ai",
@@ -1026,9 +1026,17 @@
           "type" : "string",
           "description" : "Initial payment date. This is the check date. Format: YYYY-MM-DD"
         },
+        "entity_name" : {
+          "type" : "string",
+          "description" : "The name of the entity submitting for arbitration."
+        },
         "insurance_phone" : {
           "type" : "string",
           "description" : "The primary contact for the insurance carrier."
+        },
+        "reader" : {
+          "type" : "string",
+          "description" : "The name of the reader conducting or overseeing (leave blank if nonapplicable)."
         },
         "insurance_address2" : {
           "type" : "string",
@@ -1062,6 +1070,10 @@
           "type" : "string",
           "description" : "The name of the insurance carrier."
         },
+        "tech" : {
+          "type" : "string",
+          "description" : "The name of the technician for the claim (leave blank if nonapplicable)."
+        },
         "entity_tax_id" : {
           "type" : "string",
           "description" : "The tax ID of the entity associated with the claim. Must be exactly 9 numeric digits (no letters, spaces, or symbols).",
@@ -1094,6 +1106,10 @@
           "type" : "string",
           "description" : "The name of the facility associated with the claim."
         },
+        "insurance_type" : {
+          "type" : "string",
+          "description" : "The type of insurance being submitted for arbitration."
+        },
         "arb_id" : {
           "type" : "integer",
           "description" : "The unique ID within arbitron.ai claim records for tracking. Required for updates and cannot be updated."
@@ -1110,6 +1126,10 @@
           "type" : "string",
           "description" : "Primary contact city"
         },
+        "accepted_negotiation" : {
+          "type" : "boolean",
+          "description" : "If the pre-negotiation phase offer was accepted or not. Default is false."
+        },
         "idr_extension_received" : {
           "type" : "boolean",
           "description" : "Determination if a idr extension was received. If set to true, the IDR extension document should be uploaded."
@@ -1117,6 +1137,10 @@
         "insurance_email" : {
           "type" : "string",
           "description" : "The insurance carrier email address."
+        },
+        "is_primary" : {
+          "type" : "boolean",
+          "description" : "If the claim record is the primary insurance claim or not. If the claim record is for secondary insurance, this will be false. Default is true."
         },
         "physician_name" : {
           "type" : "string",
@@ -1166,6 +1190,10 @@
           "type" : "string",
           "description" : "Imported ID to help track records uniquely from 3rd party system."
         },
+        "third_party_pricer" : {
+          "type" : "string",
+          "description" : "Field that the cash posting team enters the name, email and number of a third party pricer if identified on the EOB"
+        },
         "entity_service_type" : {
           "type" : "string",
           "description" : "Service type for arbitration."
@@ -1178,9 +1206,17 @@
           "type" : "string",
           "description" : "Quinary diagnosis code for for the claim. This is optional."
         },
+        "procedure" : {
+          "type" : "string",
+          "description" : "The description of the procedure conducted."
+        },
         "entity_secondary_point_contact_address" : {
           "type" : "string",
           "description" : "Secondary point of contact address line 1."
+        },
+        "first_check_number" : {
+          "type" : "string",
+          "description" : "The check number for the initial payment related to the 'Primary' payment from the Primary/Secondary column in the condensed Insurance Payments Collected report which can be by CPT code  if a CPT code is paid on a claim and then another CPT code is paid at a later date ."
         },
         "entity_other_service_description" : {
           "type" : "string",
@@ -1221,6 +1257,10 @@
         "negotiation_start_date" : {
           "type" : "string",
           "description" : "Negotiation start date. Format: YYYY-MM-DD"
+        },
+        "total_collections" : {
+          "type" : "number",
+          "description" : "The total payment collected for the claim. This is a read-only attribute."
         },
         "insurance_fax_number" : {
           "type" : "string",
